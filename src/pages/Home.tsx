@@ -1,25 +1,29 @@
 import FlexContent from "../components/FlexContent";
 import Hero from "../components/Hero";
+import Loading from "../components/Loading";
 import Sales from "../components/Sales";
 import Stories from "../components/Stories";
-import {
-  heroapi,
-  highlight,
-  popularsales,
-  sneaker,
-  story,
-  toprateslaes,
-} from "../data/data";
+import { heroapi, highlight, sneaker } from "../data/data";
+import { useGetIndexQuery } from "../redux/api/shopApiSlice";
 
 const Home = () => {
+  const { data, isLoading } = useGetIndexQuery(null);
+  if (isLoading || !data) {
+    return <Loading />;
+  }
+  const { topProducts, allProducts, stories } = data;
+
   return (
     <main className="flex flex-col gap-16 relative">
       <Hero heroapi={heroapi} />
-      <Sales endpoint={popularsales} ifExists={true} />
+      <Sales
+        endpoint={{ title: "Popular Sales", items: topProducts }}
+        ifExists={true}
+      />
       <FlexContent endpoint={highlight} ifExists={true} />
-      <Sales endpoint={toprateslaes} />
+      <Sales endpoint={{ title: "Top Rated Sales", items: allProducts }} />
       <FlexContent endpoint={sneaker} />
-      <Stories story={story} />
+      <Stories story={stories} />
     </main>
   );
 };
