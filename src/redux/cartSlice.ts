@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 type cartItems = {
   cartQuantity: number;
-  id: string;
+  _id: string;
   title: string;
   text: string;
   rating: string;
@@ -51,13 +51,13 @@ const cartSlice = createSlice({
     },
     setAddItemToCart: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
 
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
 
-        toast.success(`Item QTY Increased`);
+        toast.success(`Item Quantity Increased`);
       } else {
         const temp: cartItems = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(temp);
@@ -70,7 +70,7 @@ const cartSlice = createSlice({
 
     setRemoveItemFromCart: (state, action) => {
       const removeItem = state.cartItems.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item._id !== action.payload._id
       );
 
       state.cartItems = removeItem;
@@ -81,26 +81,26 @@ const cartSlice = createSlice({
 
     setIncreaseItemQTY: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
 
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
 
-        toast.success(`Item QTY Increased`);
+        toast.success(`Item Quantity Increased`);
       }
       localStorage.setItem("cart", JSON.stringify(state.cartItems));
     },
 
     setDecreaseItemQTY: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
 
-        toast.success(`Item QTY Decreased`);
+        toast.success(`Item Quantity Decreased`);
       }
       localStorage.setItem("cart", JSON.stringify(state.cartItems));
     },
