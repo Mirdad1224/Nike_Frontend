@@ -20,7 +20,7 @@
     display: none;
   }
   .scroll-style::-webkit-scrollbar {
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth; 
     scrollbar-width: thin;
     scrollbar-color: rgb(66, 245, 141) rgb(66, 245, 141);
   }
@@ -58,7 +58,7 @@
 
   /* Icon Stles */
   .icon-style {
-    @apply h-6 w-6 sm:h-5 sm:w-5 text-slate-100 cursor-pointer transition-all duration-100 active:scale-110 leading-tight;
+    @apply h-6 w-6 sm:h-5 sm:w-5 text-slate-100 mx-1 cursor-pointer transition-all duration-100 active:scale-110 leading-tight;
   }
 
   /* text-gradient */
