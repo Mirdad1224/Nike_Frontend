@@ -3,7 +3,7 @@ export type SalesProps = {
   endpoint: {
     title: string;
     items: {
-      id: string;
+      _id: string;
       title: string;
       text: string;
       rating: string;

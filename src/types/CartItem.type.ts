@@ -1,6 +1,6 @@
 export type CartItemProps = {
   item: {
-    id: string;
+    _id: string;
     title: string;
     text: string;
     img: string;

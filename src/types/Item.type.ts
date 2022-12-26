@@ -1,6 +1,6 @@
 export type ItemProps = {
   ifExists: boolean;
-  id: string;
+  _id: string;
   color: string;
   shadow: string;
   title: string;
