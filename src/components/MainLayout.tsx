@@ -6,12 +6,12 @@ import Navbar from "./Navbar"
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
         <Navbar />
         <Cart />
         <Outlet />
         <Footer footerAPI={footerAPI} />
-    </div>
+    </>
   )
 }
 export default MainLayout
