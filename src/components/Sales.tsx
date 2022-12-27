@@ -18,7 +18,7 @@ const Sales = ({
           }`}
         >
           {items?.map((item, i) => (
-            <Item {...item} key={i} ifExists={ifExists} />
+            <Item {...item} key={item._id} ifExists={ifExists} />
           ))}
         </div>
       </div>

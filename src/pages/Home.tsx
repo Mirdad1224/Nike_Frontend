@@ -21,7 +21,7 @@ const Home = () => {
         ifExists={true}
       />
       <FlexContent endpoint={highlight} ifExists={true} />
-      <Sales endpoint={{ title: "Top Rated Sales", items: allProducts }} />
+      <Sales ifExists={false} endpoint={{ title: "Top Rated Sales", items: allProducts }} />
       <FlexContent endpoint={sneaker} />
       <Stories story={stories} />
     </main>

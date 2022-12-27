@@ -8,12 +8,11 @@ const Favorates = () => {
   const { data, isLoading } = useGetFavoratesQuery(null);
   const { username } = useAuth();
 
-  console.log(username);
   if (isLoading) return <Loading />;
   if (!username) return <Navigate to="/login" />;
   if (username && data) {
     return (
-      <div className="mt-40 flex flex-col gap-16 relative">
+      <div className="mt-40 mb-10 flex flex-col gap-16 relative">
         {data?.data?.length === 0 ? (
           <div className="h-[50vh] grid place-items-center">
             <p

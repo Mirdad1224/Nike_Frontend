@@ -8,14 +8,14 @@ import {
 import { CartItemProps } from "../../types/CartItem.type";
 
 const CartItem = ({
-  item: { id, title, text, img, color, shadow, price, cartQuantity },
+  item: { _id, title, text, img, color, shadow, price, cartQuantity },
 }: CartItemProps) => {
   const dispatch = useDispatch();
 
   const onRemoveItem = () => {
     dispatch(
       setRemoveItemFromCart({
-        id,
+        _id,
         title,
         text,
         img,
@@ -30,7 +30,7 @@ const CartItem = ({
   const onIncreaseItemQTY = () => {
     dispatch(
       setIncreaseItemQTY({
-        id,
+        _id,
         title,
         text,
         img,
@@ -44,7 +44,7 @@ const CartItem = ({
   const onDecreaseItemQTY = () => {
     dispatch(
       setDecreaseItemQTY({
-        id,
+        _id,
         title,
         text,
         img,
@@ -64,8 +64,8 @@ const CartItem = ({
             className={`bg-gradient-to-b ${color} ${shadow} relative rounded p-3 hover:scale-105 transition-all duration-75 ease-in-out grid items-center`}
           >
             <img
-              src={img}
-              alt={`img/cart-item/${id}`}
+              src={`${process.env.REACT_APP_BASE_URL}${img}`}
+              alt={`img/cart-item/${_id}`}
               className="w-36 h-auto object-fill lg:w-28"
             />
             <div className="absolute right-1 top-1 blur-theme-effect bg-white/80 text-black text-xs px-1 rounded">
