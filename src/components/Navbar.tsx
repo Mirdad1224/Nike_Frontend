@@ -3,15 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTotalQTY, setOpenCart } from "../redux/cartSlice";
 import {
   HeartIcon,
-  MagnifyingGlassIcon,
+  ArrowRightOnRectangleIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { useSendLogoutMutation } from "../redux/api/authApiSlice";
+import { logOut } from "../redux/authSlice";
 
 const Navbar = () => {
   const [navState, setNavState] = useState<boolean>(false);
   const dispatch = useDispatch();
   const totalQTY = useSelector(selectTotalQTY);
+  const { username } = useAuth();
+  const [sendLogout, { isLoading }] = useSendLogoutMutation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const onCartToggle = () => {
     dispatch(
@@ -19,6 +27,12 @@ const Navbar = () => {
         cartState: true,
       })
     );
+  };
+
+  const handleLogout = () => {
+    sendLogout(null);
+    dispatch(logOut(null));
+    !isLoading && navigate("/", { replace: true });
   };
 
   const onNavScroll = () => {
@@ -40,8 +54,12 @@ const Navbar = () => {
       <header
         className={
           !navState
-            ? "absolute top-7 left-0 right-0 opacity-100 z-50"
-            : "fixed top-0 left-0 right-0 h-[9vh] flex items-center justify-center opacity-100 z-[200] blur-effect-theme"
+            ? `fixed left-0 right-0 opacity-100 z-40 ${
+                location.pathname === "/"
+                  ? "bg-transparent top-7"
+                  : "bg-blue-500 top-0 h-[9vh] flex items-center justify-center"
+              }`
+            : `fixed top-0 left-0 right-0 h-[9vh] flex items-center justify-center opacity-100 z-[200] blur-effect-theme`
         }
       >
         <nav className="flex items-center justify-between nike-container">
@@ -54,18 +72,58 @@ const Navbar = () => {
           </div>
           <ul className="flex items-center justify-center gap-2">
             <li className="grid items-center">
-              <MagnifyingGlassIcon
+              {/* <MagnifyingGlassIcon
                 className={`icon-style ${
                   navState && "text-slate-900 transition-all duration-300"
                 }`}
-              />
+              /> */}
+              {username && (
+                <div className="flex justify-center items-end gap-1">
+                  <ArrowRightOnRectangleIcon
+                    onClick={handleLogout}
+                    className={`icon-style hover:text-red-300 ${
+                      navState && "text-slate-900 transition-all duration-300"
+                    }`}
+                  />
+                  <span
+                    className={`icon-style ${
+                      navState && "text-slate-900 transition-all duration-300"
+                    }`}
+                  >
+                    {username}
+                  </span>
+                </div>
+              )}
+              {!username && (
+                <div>
+                  <Link
+                    to="/login"
+                    className={`icon-style hover:text-red-300 ${
+                      navState && "text-slate-900 transition-all duration-300"
+                    }`}
+                  >
+                    LOGIN |
+                  </Link>
+                  <Link
+                    to="/register"
+                    className={`icon-style hover:text-red-300 ${
+                      navState && "text-slate-900 transition-all duration-300"
+                    }`}
+                  >
+                    {" "}
+                    SIGNUP
+                  </Link>
+                </div>
+              )}
             </li>
             <li className="grid items-center">
-              <HeartIcon
-                className={`icon-style ${
-                  navState && "text-slate-900 transition-all duration-300"
-                }`}
-              />
+              <Link to="/favorate">
+                <HeartIcon
+                  className={`icon-style ${
+                    navState && "text-slate-900 transition-all duration-300"
+                  }`}
+                />
+              </Link>
             </li>
             <li className="grid items-center">
               <button
@@ -92,6 +150,7 @@ const Navbar = () => {
           </ul>
         </nav>
       </header>
+      <Outlet />
     </>
   );
 };
