@@ -1,11 +1,12 @@
+import { StarIcon } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
-import { StarIcon, ShoppingBagIcon } from "@heroicons/react/24/solid";
 import { setAddItemToCart, setOpenCart } from "../redux/cartSlice";
 import { ItemProps } from "../types/Item.type";
+import FavorateButton from "./FavorateButton";
 
 const Item = ({
   ifExists,
-  id,
+  _id,
   color,
   shadow,
   title,
@@ -16,9 +17,8 @@ const Item = ({
   price,
 }: ItemProps) => {
   const dispatch = useDispatch();
-
   const onAddToCart = () => {
-    const item = { id, title, text, img, color, shadow, price };
+    const item = { _id, title, text, img, color, shadow, price };
 
     dispatch(setAddItemToCart(item));
   };
@@ -63,13 +63,7 @@ const Item = ({
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="bg-white/90 blur-effect-theme button-theme p-0.5 shadow shadow-sky-200"
-              onClick={() => onAddToCart()}
-            >
-              <ShoppingBagIcon className="icon-style text-slate-900" />
-            </button>
+            <FavorateButton _id={_id} />
             <button
               type="button"
               className="bg-white/90 blur-effect-theme button-theme px-2 py-1 shadow shadow-sky-200 text-sm text-black"
@@ -88,8 +82,8 @@ const Item = ({
           }`}
         >
           <img
-            src={img}
-            alt={`img/item-img/${id}`}
+            src={`${process.env.REACT_APP_BASE_URL}${img}`}
+            alt={`img/item-img/${_id}`}
             className={`transitions-theme hover:-rotate-12 ${
               ifExists
                 ? "h-auto w-64 lg:w-56 md:w-48 -rotate-[35deg]"
