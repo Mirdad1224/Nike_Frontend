@@ -7,7 +7,7 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
-import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useSendLogoutMutation } from "../redux/api/authApiSlice";
 import { logOut } from "../redux/authSlice";
@@ -150,7 +150,6 @@ const Navbar = () => {
           </ul>
         </nav>
       </header>
-      <Outlet />
     </>
   );
 };
