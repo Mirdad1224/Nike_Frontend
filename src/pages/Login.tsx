@@ -3,7 +3,7 @@ import image from "../assets/login.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/api/authApiSlice";
 import toast from "react-hot-toast";
 import Loading from "../components/Loading";
@@ -138,24 +138,34 @@ const Login = () => {
                   <p className="text-red-400">{errors.pwd?.message}</p>
                 </div>
               </div>{" "}
-              <label htmlFor="persist" className="form__persist">
+              <label
+                htmlFor="persist"
+                className="flex items-center w-100 gap-2 ml-2 my-2"
+              >
                 <input
                   type="checkbox"
-                  className="form__checkbox"
+                  className="w-4 h-4"
                   id="persist"
                   onChange={handleToggle}
                   checked={persist}
                 />
-                Trust This Device
+                Remember me
               </label>
               {/* Form body container */}
-              <div className="flex -mx-3">
+              <div className="flex -mx-3 mt-4">
                 <div className="w-full px-3 mb-5">
                   <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
                     Login
                   </button>
                 </div>
               </div>{" "}
+              <div className="my-4">
+                Don't have an account?
+                <Link to="/register" className="text-red-400">
+                  {" "}
+                  Create an account.
+                </Link>
+              </div>
               {/* Form body container */}
             </form>
           </div>{" "}

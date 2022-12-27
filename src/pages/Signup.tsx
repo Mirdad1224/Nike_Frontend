@@ -7,7 +7,7 @@ import image from "../assets/login.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSignupMutation } from "../redux/api/authApiSlice";
 import toast from "react-hot-toast";
 import Loading from "../components/Loading";
@@ -151,6 +151,13 @@ const Signup = () => {
                   </button>
                 </div>
               </div>{" "}
+              <div className="my-4">
+                Already have an account?
+                <Link to="/login" className="text-red-400">
+                  {" "}
+                  Log in your account.
+                </Link>
+              </div>
               {/* Form body container */}
             </form>
           </div>{" "}
