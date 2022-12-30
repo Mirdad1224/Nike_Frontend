@@ -85,4 +85,70 @@ const footerAPI = {
   ],
 };
 
-export { heroapi, footerAPI, sneaker, highlight };
+const popularsales = [
+    {
+      color: "from-blue-600 to-blue-500",
+      shadow: "shadow-lg shadow-blue-500",
+    },
+    {
+      color: "from-red-500 to-rose-500",
+      shadow: "shadow-lg shadow-rose-500",
+    },
+    {
+      color: "from-violet-500 to-indigo-500",
+      shadow: "shadow-lg shadow-violet-500",
+    },
+]
+
+const toprateslaes = [
+    {
+      color: "from-sky-600 to-indigo-600",
+      shadow: "shadow-lg shadow-blue-500",
+    },
+    {
+      color: "from-green-500 to-emerald-500",
+      shadow: "shadow-lg shadow-green-500",
+    },
+    {
+      color: "from-red-500 to-rose-500",
+      shadow: "shadow-lg shadow-rose-500",
+    },
+    {
+      color: "from-orange-500 to-amber-500",
+      shadow: "shadow-lg shadow-orange-500",
+    },
+    {
+      color: "from-gray-900 to-yellow-500",
+      shadow: "shadow-lg shadow-yellow-500",
+    },
+    {
+      color: "from-blue-500 to-cyan-500",
+      shadow: "shadow-lg shadow-cyan-500",
+    },
+    {
+      color: "from-yellow-500 to-yellow-500",
+      shadow: "shadow-lg shadow-yellow-500",
+    },
+    {
+      color: "from-[#936550] to-orange-900",
+      shadow: "shadow-lg shadow-orange-800",
+    },
+    {
+      color: "from-indigo-700 to-indigo-700",
+      shadow: "shadow-lg shadow-indigo-500",
+    },
+    {
+      color: "from-green-600 to-lime-500",
+      shadow: "shadow-lg shadow-lime-500",
+    },
+    {
+      color: "from-slate-900 to-black",
+      shadow: "shadow-lg shadow-black",
+    },
+    {
+      color: "from-blue-900 to-blue-500",
+      shadow: "shadow-lg shadow-blue-500",
+    },
+]
+
+export { heroapi, footerAPI, sneaker, highlight, popularsales, toprateslaes };
