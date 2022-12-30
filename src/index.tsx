@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { Toaster } from "react-hot-toast";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,3 +24,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.register()
