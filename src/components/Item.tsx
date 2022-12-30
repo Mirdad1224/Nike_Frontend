@@ -22,7 +22,6 @@ const Item = ({
 
     dispatch(setAddItemToCart(item));
   };
-
   const onCartToggle = () => {
     dispatch(
       setOpenCart({
