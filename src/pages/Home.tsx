@@ -14,7 +14,7 @@ const Home = () => {
   const { topProducts, allProducts, stories } = data;
 
   return (
-    <main className="flex flex-col gap-16 relative">
+    <main className="flex flex-col gap-16 relative overflow-x-hidden">
       <Hero heroapi={heroapi} />
       <Sales
         endpoint={{ title: "Popular Sales", items: topProducts }}
