@@ -9,7 +9,7 @@ import { useGetIndexQuery } from "../redux/api/shopApiSlice";
 const Home = () => {
   const { data, isLoading } = useGetIndexQuery(null);
   if (isLoading || !data) {
-    return <Loading />;
+    return <div className="w-full h-screen overflow-hidden"><Loading /></div>;
   }
   const { topProducts, allProducts, stories } = data;
 
